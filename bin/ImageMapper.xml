@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="database.ImageMapper">
+  <select id="selectImageByUrl" parameterType="java.lang.String" resultType="int">
+    SELECT COUNT(*) FROM test21.images WHERE url = #{value};
+  </select>
+  <insert id="insertImage" parameterType="database.Image">
+    INSERT INTO test21.images(item_id, url, location)
+    VALUES(#{itemId}, #{url}, #{location});
+  </insert>
+  <update id="updateImage" parameterType="database.Image">
+    UPDATE test21.images 
+    SET url = #{url}
+    WHERE item_id = #{itemId};
+  </update>
+</mapper>

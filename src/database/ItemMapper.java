@@ -1,6 +1,7 @@
 package database;
 
 public interface ItemMapper {
-	public Item selectItemByUrlAndName(Item item);
+	public Item selectItemByUrl(String url);
 	public int insertItem(Item item);
+	public int updateItem(Item item);
 }

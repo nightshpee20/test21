@@ -3,10 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="database.ItemMapper">
-  <select id="selectItemByUrlAndName" resultType="database.Item">
+  <select id="selectItemByUrl" parameterType="java.lang.String" resultType="database.Item">
     SELECT *
     FROM test21.items
-    WHERE url = #{url} 
-    AND name = #{name}
+    WHERE url = #{value}; 
   </select>
+  <insert id="insertItem" parameterType="database.Item" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO test21.items(title, url, price, description)
+    VALUES(#{title}, #{url}, #{price}, #{description});
+  </insert>
+  <update id="updateItem" parameterType="database.Item">
+    UPDATE test21.items
+    SET title = #{title}, price = #{price}, description = #{description}
+    WHERE url = #{url}
+  </update>
 </mapper>
